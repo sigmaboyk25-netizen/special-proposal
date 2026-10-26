@@ -1,1 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff6f9f">
+<title>A Little Message for You ❤️</title>
+<style>
+  :root { --pink:#ff4f87; --deep:#b92761; --pale:#fff0f6; --ink:#61233f; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden; color:var(--ink);
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background:linear-gradient(145deg,#ffe4ef,#fff7fb 45%,#ffd2e4);
+  }
+  .glow {
+    position:fixed; inset:0; pointer-events:none; opacity:.6;
+    background:radial-gradient(circle at 15% 20%,#fff 0 2px,transparent 3px),
+               radial-gradient(circle at 80% 30%,#fff 0 2px,transparent 3px),
+               radial-gradient(circle at 35% 75%,#fff 0 2px,transparent 3px);
+    background-size:130px 150px,170px 180px,190px 160px;
+  }
+  .heart {
+    position:fixed; bottom:-40px; z-index:0; pointer-events:none;
+    color:#ff6e9d; opacity:.65; animation:floatUp linear forwards;
+  }
+  @keyframes floatUp { to { transform:translateY(-115vh) rotate(25deg); opacity:0; } }
+  main { position:relative; z-index:1; width:min(92%,560px); margin:0 auto; padding:24px 0 40px; }
+  .card {
+    background:rgba(255,255,255,.83); border:1px solid rgba(255,255,255,.95);
+    border-radius:28px; padding:30px 24px; text-align:center;
+    box-shadow:0 18px 55px rgba(185,39,97,.15); backdrop-filter:blur(8px);
+    min-height:520px; display:flex; flex-direction:column; justify-content:center;
+  }
+  .tiny { color:#e04c83; letter-spacing:3px; text-transform:uppercase; font-size:.72rem; font-weight:bold; }
+  h1 { font-family:Georgia,serif; font-weight:normal; color:#c52e68; font-size:clamp(2rem,8vw,3rem); line-height:1.13; margin:16px 0; }
+  h2 { font-family:Georgia,serif; color:#c52e68; font-size:1.8rem; font-weight:normal; }
+  p { line-height:1.8; font-size:1.04rem; }
+  .big-heart { font-size:3.5rem; animation:pulse 1.3s infinite; }
+  @keyframes pulse { 50% { transform:scale(1.12); } }
+  .rule { width:90px; height:2px; background:#ff9bbb; margin:8px auto 20px; border-radius:9px; }
+  .buttons { display:flex; flex-direction:column; gap:12px; margin:20px auto 0; width:min(100%,330px); }
+  button {
+    border:0; border-radius:999px; padding:15px 20px; font-size:1rem; font-weight:bold;
+    cursor:pointer; transition:transform .15s, box-shadow .15s; font-family:inherit;
+  }
+  button:active { transform:scale(.98); }
+  .primary { background:linear-gradient(100deg,#ff4783,#ff79a5); color:white; box-shadow:0 8px 22px #ff9cba; }
+  .secondary { background:#fff; color:#c52e68; border:1px solid #ffc0d5; }
+  .hidden { display:none; }
+  .note { font-size:.82rem; color:#9d5b77; margin-top:20px; }
+  footer { text-align:center; font-size:.78rem; color:#a85d7b; padding:18px 8px 0; }
+  @media(max-width:380px) { .card{padding:24px 17px;min-height:500px} p{font-size:.98rem} }
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<main>
+  <section class="card" id="page1">
+    <div class="big-heart">💗</div>
+    <div class="tiny">A little message for you</div>
+    <h1>Hey,<br>Someone Special!</h1>
+    <div class="rule"></div>
+    <p>There’s something in my heart<br>that I’ve wanted to tell you… 🌸</p>
+    <div class="buttons"><button class="primary" onclick="showPage(2)">Open My Heart 💌</button></div>
+    <div class="note">A little honesty, from me to you.</div>
+  </section>
 
+  <section class="card hidden" id="page2">
+    <div class="tiny">01 — A little about you</div>
+    <h2>You’re Special 🌷</h2>
+    <div class="big-heart">🌸</div>
+    <p>There are so many people in this world, but somehow, you’ve become someone special to me.</p>
+    <p>Your kindness, your smile, and our little conversations mean more to me than you might realize. ❤️</p>
+    <div class="buttons"><button class="primary" onclick="showPage(3)">Next 💗</button></div>
+  </section>
+
+  <section class="card hidden" id="page3">
+    <div class="tiny">02 — My feelings</div>
+    <h2>Honestly… 💌</h2>
+    <p>I didn’t plan for this feeling to happen. It grew little by little, through our conversations and the moments we shared.</p>
+    <p>I like talking to you, and lately, I’ve started to like you as more than a friend. 🌹</p>
+    <p>I don’t know how you feel, and I don’t want to assume. I just wanted to be honest with you.</p>
+    <div class="buttons"><button class="primary" onclick="showPage(4)">One Last Thing… ✨</button></div>
+  </section>
+
+  <section class="card hidden" id="page4">
+    <div class="big-heart">💖</div>
+    <div class="tiny">From my heart</div>
+    <h1>Will you give me a chance to be more than a friend?</h1>
+    <div class="rule"></div>
+    <p>Whatever your answer is, I’ll respect it. Please choose what feels right for you. ❤️</p>
+    <div class="buttons">
+      <button class="primary" onclick="sendYes()">Yes ❤️</button>
+      <button class="secondary" onclick="showPage(5)">Let me think 💭</button>
+    </div>
+    <div class="note">No pressure. Your feelings matter.</div>
+  </section>
+
+  <section class="card hidden" id="page5">
+    <div class="big-heart">💙</div>
+    <h1>That’s completely okay.</h1>
+    <div class="rule"></div>
+    <p>Take your time. You don’t have to decide right now. I respect your feelings, and I’m glad I could be honest with you. 🌷</p>
+    <div class="buttons"><button class="secondary" onclick="showPage(1)">Back to the beginning ↻</button></div>
+  </section>
+
+  <footer>Made with care 💗 — You can take all the time you need.</footer>
+</main>
+<script>
+  // IMPORTANT: Replace the number below with your WhatsApp number.
+  // Bangladesh example: 01712345678 becomes 8801712345678 (no +, spaces, or dashes).
+  const YOUR_WHATSAPP_NUMBER = "8801XXXXXXXXX";
+
+  function showPage(number) {
+    document.querySelectorAll(".card").forEach(card => card.classList.add("hidden"));
+    document.getElementById("page" + number).classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function sendYes() {
+    if (YOUR_WHATSAPP_NUMBER.includes("X")) {
+      alert("The website creator needs to add their WhatsApp number in the code first.");
+      return;
+    }
+    const message = "Hey! ❤️ I clicked Yes on your special message. I’d like to give us a chance. 💖";
+    const url = "https://wa.me/" + YOUR_WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+    window.location.href = url;
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = ["♥","♡","💗","💕"][Math.floor(Math.random()*4)];
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (14 + Math.random()*18) + "px";
+    const duration = 6 + Math.random()*5;
+    heart.style.animationDuration = duration + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), duration*1000);
+  }
+  setInterval(createHeart, 650);
+</script>
+</body>
+</html>
